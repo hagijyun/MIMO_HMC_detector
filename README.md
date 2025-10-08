@@ -6,7 +6,7 @@ Paper: [Hamiltonian Monte Carlo-Based Near-Optimal MIMO Signal Detection](https:
 
 ## Overview
 
-This repository implements near-optimal MIMO signal detection by transforming the discrete detection problem into a continuous framework and leveraging the HMC algorithm via Stan.
+This repository implements near-optimal MIMO signal detection leveraging the HMC algorithm via Stan.
 
 ## Requirements
 
