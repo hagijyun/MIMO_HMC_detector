@@ -12,14 +12,9 @@ This repository implements near-optimal MIMO signal detection by transforming th
 
 - R >= 4.0
 - rstan
-- ggplot2
 
-## Installation
 
-```r
-install.packages("rstan")
-install.packages("ggplot2")
-```
+
 
 ## Usage
 
@@ -28,16 +23,7 @@ source("main.R")
 # Run simulation
 ```
 
-## Citation
 
-```bibtex
-@article{hagiwara2024hamiltonian,
-  title={Hamiltonian Monte Carlo-Based Near-Optimal MIMO Signal Detection},
-  author={Hagiwara, Junichiro et al.},
-  journal={arXiv preprint arXiv:2412.02391},
-  year={2024}
-}
-```
 
 ## License
 
