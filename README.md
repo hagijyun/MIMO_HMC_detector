@@ -10,7 +10,7 @@ This repository implements near-optimal MIMO signal detection leveraging the HMC
 
 ## Requirements
 
-- R >= 4.0
+- R >= 3.6.1
 - rstan
 
 
