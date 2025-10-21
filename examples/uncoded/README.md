@@ -1,5 +1,6 @@
 # Usage
 
-1. 全ファイルを同一の作業ディレクトリにコピー
-2. setwd("your_own_working_directory")
-3. source("total_sample.R")
+1. Copy all files to the common working directory.
+2. Rを起動
+3. setwd("common working directory")
+4. source("total_sample.R")
