@@ -335,7 +335,7 @@ if (EXTRINSIC_LLR == TRUE){
 		u_hat_MMSE <- solve(t(trial$H) %*% trial$H + trial$sigma.w2/Es * diag(n*2)) %*% t(trial$H) %*% trial$y
 		### 判定（MMSE）
 		u_hat_ID_MMSE <- 								comp.vec(t(u_hat_MMSE))																																									# 軟値
-		### MMSEの結果を他方式の初期値として利用
+		### MMSEの結果を他方式の初期値として利用（未活用）
 		MMSE_mu <- real.vec(u_hat_ID_MMSE)
 
 		### 軟判定（MMSE-SIC）
