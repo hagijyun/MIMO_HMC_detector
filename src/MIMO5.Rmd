@@ -1,0 +1,121 @@
+# MIMOの確率復号
+#
+# 無符号時のユーティリティ関数類
+# MIMO5.Rmd
+
+
+
+
+# ●硬判定
+
+res_hard <- lapply(res, function(by_snr){																																# SNR
+	lapply(by_snr, function(by_trial){																																		# 試行回数
+		by_trial$u_hat_ID_MMSE							<- hard.descision(by_trial$u_hat_ID_MMSE)
+		by_trial$u_hat_ID_EP								<- hard.descision(by_trial$u_hat_ID_EP)
+		by_trial$u_hat_ID_MCMC_fixed_sigma	<- hard.descision(by_trial$u_hat_ID_MCMC_fixed_sigma)
+		by_trial$u_hat_ID_turbo							<- hard.descision(by_trial$u_hat_ID_turbo)
+		by_trial$u_hat_ID_MGS								<- hard.descision(by_trial$u_hat_ID_MGS)
+		by_trial$u_hat_ID_MHGD							<- hard.descision(by_trial$u_hat_ID_MHGD)
+		by_trial$u_hat_ID_Lang							<- hard.descision(by_trial$u_hat_ID_Lang)
+		by_trial$u_hat_SD										<- hard.descision(by_trial$u_hat_ID_SD	)
+#
+		return(by_trial)
+	})
+})
+
+
+## 誤り率の計算
+
+### 補誤差関数、SISO AWGNでのBER（理論値）を求める関数
+erfc <- function(x){ return(2 * pnorm(x*sqrt(2), lower = FALSE)) }
+qpsk.awgn.ber <- function(SNR.dB){												# SISO AWGNの理論値
+	SNR.True <- 10^(SNR.dB/10) * (m/n)											# 真値に変換、送受信アンテナ数の比率に基づき補正
+				if (COMPONENT_BITS == 1){													# QPSK
+		return(1/ 2 * erfc(sqrt(SNR.True/ 2)) )
+	}else if (COMPONENT_BITS == 2){													# 16QAM
+		return(3/ 8 * erfc(sqrt(SNR.True/10)) )
+	}else if (COMPONENT_BITS == 3){													# 64QAM
+		return(7/24 * erfc(sqrt(SNR.True/42)) )
+	}else{
+		return(-1)
+	}
+}
+
+### SISO AWGNでのBER（理論値）
+AWGN_BER <- qpsk.awgn.ber(SNR_LIST)
+
+### 平均BERを計算する関数
+average_BER <- function(res, method){
+	res_err <- sapply(res, function(by_snr){								# SNR
+		sapply(by_snr, function(by_trial){										# 試行回数
+					 if (method == "MMSE"							){ u_hat_bits <- as.vector(bits[, by_trial$u_hat_ID_MMSE							])	}
+			else if (method == "MMSE-SIC"					){ u_hat_bits <- as.vector(bits[, by_trial$u_hat_ID_MMSE_SIC					])	}
+			else if (method == "EP"								){ u_hat_bits <- as.vector(bits[, by_trial$u_hat_ID_EP								])	}
+			else if (method == "HMC-fixed-sigma"	){ u_hat_bits <- as.vector(bits[, by_trial$u_hat_ID_MCMC_fixed_sigma	])	}
+			else if (method == "TURBO"						){ u_hat_bits <- as.vector(bits[, by_trial$u_hat_ID_turbo							])	}
+			else if (method == "MGS"							){ u_hat_bits <- as.vector(bits[, by_trial$u_hat_ID_MGS								])	}
+			else if (method == "MHGD"							){ u_hat_bits <- as.vector(bits[, by_trial$u_hat_ID_MHGD							])	}
+			else if (method == "Lang"							){ u_hat_bits <- as.vector(bits[, by_trial$u_hat_ID_Lang							])	}
+#
+			else if (method == "SD"								){ u_hat_bits <- as.vector(bits[, by_trial$u_hat_ID_SD								])	}
+
+			u_bits <- as.vector(bits[, by_trial$u_ID])
+			return(
+				sum(xor(u_hat_bits, u_bits))
+			)
+		})
+	})
+	
+	return(colMeans(res_err) / (n * SYMB_bits))
+}
+
+### 各方式のBER
+MMSE_BER								<- average_BER(res = res_hard, method = "MMSE"						)
+# MMSE_SIC_BER					<- average_BER(res = res_hard, method = "MMSE-SIC"				)
+EP_BER									<- average_BER(res = res_hard, method = "EP"							)
+#MCMC_FIXED_SIGMA_BER		<- average_BER(res = res_hard, method = "HMC-fixed-sigma"	)
+# TURBO_BER							<- average_BER(res = res_hard, method = "TURBO"						)
+MGS_BER									<- average_BER(res = res_hard, method = "MGS"							)
+MHGD_BER								<- average_BER(res = res_hard, method = "MHGD"						)
+ Lang_BER								<- average_BER(res = res_hard, method = "Lang"						)
+# SD_BER								<- average_BER(res = res_hard, method = "SD"							)
+
+
+
+## 結果の確認
+
+### 値の一覧
+SNR_LIST
+rho; n; m; k_MAX
+							AWGN_BER
+ 					    MMSE_BER
+								EP_BER
+	MCMC_FIXED_SIGMA_BER
+#						 TURBO_BER
+							 MGS_BER
+							MHGD_BER
+							Lang_BER
+#								SD_BER
+
+
+
+
+
+
+
+
+### デバグ用：時間のかかるMGS結果の保存
+save(MGS_BER, rho, n, m, k_MAX, MMSE_BER, MGS_iter, MGS_chains, SNR_LIST, file = sprintf("e:/MGS_BER_k%d_%s.RData", k_MAX, format(Sys.time(), "%Y%m%d%H%M%S")))
+
+###	60秒後にシャットダウン
+#	system("shutdown /s /f /t 60")
+
+
+
+
+### デバグ用：EVM（EVM(u_hat = comp.vec(t(u_hat)), u_ID = trial$u_ID)等で使う）
+EVM <- function(u_hat, u_ID){
+	return(
+		abs(u_hat - QPSK_SYMB[u_ID])
+	)
+}
