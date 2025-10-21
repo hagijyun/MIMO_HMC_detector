@@ -16,12 +16,9 @@ This repository implements near-optimal MIMO signal detection leveraging the HMC
 
 
 
-## Usage
-
-```r
-source("main.R")
-# Run simulation
-```
+## Directory Structure
+- `src/`: Source code implementation
+- `examples/`: Ready-to-run configurations for quick testing
 
 
 
