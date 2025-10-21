@@ -10,9 +10,11 @@ This repository implements near-optimal MIMO signal detection leveraging the HMC
 - `src/`: Source code implementation
 - `examples/`: Ready-to-run configurations for quick testing
 
+
 ## Requirements
-- R >= 3.6.1
-- rstan
+- R with RStan
+- MATLAB (for LDPC codes)
+- Python (for OAMP-Net2)
 
 
 ## License
