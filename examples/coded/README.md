@@ -1,5 +1,13 @@
+# 前提
+## Path
+作業ディレクトリからRscript.exe, matlab.exeが実行できるようにパスを通しておく
+
+## MATLABのスクリプト
+send_receive2_para.m and mean_numErrs.m suppose working directory as e:\.
+
+
 # Usage
-1. Copy all files to the common working directory.
-2. Start R
-3. setwd("the common working directory")
-4. source("_quick_examples.R")
+1. Download all files to the common working directory.
+2. 3GPP_LDPC_BG1.Z96とsend_receive2_para.mを、MATLABを起動したときのデフォルトの作業ディレクトリ(WindowsであればC:\Users\ユーザー名\Documents\MATLAB)へ移動
+3. WSHを管理者権限で実行
+4. .\_quick_examples.ps1
