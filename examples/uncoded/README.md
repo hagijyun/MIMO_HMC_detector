@@ -1,11 +1,10 @@
-# 前提
+# Prerequisites
 ## Path
-作業ディレクトリから以下が実行できるようにパスを通しておく
-- Rtools (make, gcc等)
+Add the following to your system PATH:
+- Rtools (make, gcc, etc.)
 
 # Usage 
-一定の実行時間かかるが、ログファイルparallell_log.txtで進行状況が確認できる
-
+Although execution takes some time, progress can be monitored via the log file parallel_log.txt
 1. Download all files to the working directory.
 2. Start R
 3. setwd("the working directory")
