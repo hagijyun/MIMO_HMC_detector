@@ -1,5 +1,5 @@
 # Usage 
-長時間かかるが、ログファイルparallell_log.txtで進行状況が確認できる
+それなりに実行時間かかるが、ログファイルparallell_log.txtで進行状況が確認できる
 
 1. Download all files to the working directory.
 2. Start R
