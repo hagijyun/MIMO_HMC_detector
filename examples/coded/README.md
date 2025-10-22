@@ -7,7 +7,7 @@ send_receive2_para.m and mean_numErrs.m suppose working directory as e:\.
 
 
 # Usage
-長時間かかるが、ログファイルparallell_log.txtで進行状況が確認できる
+それなりに実行時間かかるが、ログファイルparallell_log.txtで進行状況が確認できる
 
 1. Download all files to the working directory.
 2. 3GPP_LDPC_BG1.Z96とsend_receive2_para.mを、MATLABを起動したときのMATLABのデフォルトディレクトリ(WindowsであればC:\Users\ユーザー名\Documents\MATLAB)へ移動
