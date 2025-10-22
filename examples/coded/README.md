@@ -1,6 +1,6 @@
 # 前提
 ## Path
-作業ディレクトリからRscript.exe, matlab.exeが実行できるようにパスを通しておく
+作業ディレクトリからRscript.exe, rtools.exe, matlab.exeが実行できるようにパスを通しておく
 
 ## MATLABのスクリプト
 send_receive2_para.m and mean_numErrs.m suppose working directory as e:\.
