@@ -1,22 +1,22 @@
-# 前提
+# Prerequisites
 ## Path
-作業ディレクトリから以下が実行できるようにパスを通しておく
+Add the following to your system PATH:
 - Rscript.exe
-- Rtools (make, gcc等)
+- Rtools (make, gcc, etc.)
 - matlab.exe
 
 ## Working directory
-以下のファイルでは作業ディレクトリにe:/を想定した記述があるので、適宜変更されたい
+The following files contain descriptions assuming e:/ as the working directory, so please modify as appropriate:
 - _quick_examples.ps1
 - MIMO5_para.Rmd
 - send_receive2_para.m
 - mean_numErrs.m
 
 # Usage
-一定の実行時間かかるが、ログファイルparallell_log.txtで進行状況が確認できる
+Although execution takes some time, progress can be monitored via the log file parallel_log.txt
 
 1. Download all files to the working directory.
-2. 3GPP_LDPC_BG1.Z96とsend_receive2_para.mを、MATLABを起動したときのMATLABのデフォルトディレクトリ(WindowsであればC:\Users\ユーザー名\Documents\MATLAB)へ移動
-3. WSHを管理者権限で実行し作業ディレクトリに移る
-4. ``.\\_quick_examples.ps1 1 5''として実行
-5. MATLABでmean_numErrs.mを実行(numErrs_mean0.csvに初発、numErrs_mean1to5.csvに繰り返し回数毎のBERが記録される)
+2. Move 3GPP_LDPC_BG1.Z96 and send_receive2_para.m to MATLAB's default directory when MATLAB starts (on Windows, this is C:\Users\username\Documents\MATLAB)
+3. Run WSH with administrator privileges and navigate to the working directory
+4. Execute by running `.\\_quick_examples.ps1 1 5`
+5. Run mean_numErrs.m in MATLAB. The initial BER will be saved to numErrs_mean0.csv, and the BER for subsequent iterations will be saved to numErrs_mean1to5.csv.
