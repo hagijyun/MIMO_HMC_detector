@@ -4,7 +4,7 @@
 - Rtools (make, gcc等)
 
 # Usage 
-それなりに実行時間かかるが、ログファイルparallell_log.txtで進行状況が確認できる
+一定の実行時間かかるが、ログファイルparallell_log.txtで進行状況が確認できる
 
 1. Download all files to the working directory.
 2. Start R
