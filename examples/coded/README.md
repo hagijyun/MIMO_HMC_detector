@@ -13,4 +13,4 @@ send_receive2_para.m and mean_numErrs.m suppose working directory as e:\.
 2. 3GPP_LDPC_BG1.Z96とsend_receive2_para.mを、MATLABを起動したときのMATLABのデフォルトディレクトリ(WindowsであればC:\Users\ユーザー名\Documents\MATLAB)へ移動
 3. WSHを管理者権限で実行し作業ディレクトリに移る
 4. ``.\\_quick_examples.ps1 1 5''として実行
-5. MATLABでmean_numErrs.mを実行
+5. MATLABでmean_numErrs.mを実行(numErrs_mean0.csvに初発、numErrs_mean1to5.csvに繰り返し回数毎のBERが記録される)
