@@ -6,7 +6,7 @@
 - matlab.exe
 
 ## Working directory
-以下のファイルでは作業ディレクトリにe:/を想定した記述がある
+以下のファイルでは作業ディレクトリにe:/を想定した記述があるので、適宜変更されたい
 - _quick_examples.ps1
 - MIMO5_para.Rmd
 - send_receive2_para.m
