@@ -5,9 +5,12 @@
 - Rtools (make, gcc等)
 - matlab.exe
 
-## MATLABのスクリプト
-send_receive2_para.m and mean_numErrs.m suppose working directory as e:\.
-
+## Working directory
+以下のファイルでは作業ディレクトリにe:/を想定した記述がある
+- _quick_examples.ps1
+- MIMO5_para.Rmd
+- send_receive2_para.m
+- mean_numErrs.m
 
 # Usage
 それなりに実行時間かかるが、ログファイルparallell_log.txtで進行状況が確認できる
