@@ -4,7 +4,7 @@ Simulation codes for MIMO signal detection using Hamiltonian Monte Carlo (HMC).
 ## Overview
 This repository implements near-optimal MIMO signal detection leveraging the HMC algorithm via Stan.
 
-## Paper
+## Related Paper
  [Hamiltonian Monte Carlo-Based Near-Optimal MIMO Signal Detection](https://arxiv.org/abs/2412.02391)
  
 ## Directory Structure
